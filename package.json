@@ -25,7 +25,7 @@
 			{
 				"language": "sml",
 				"scopeName": "source.sml",
-				"path": "./syntaxes/sml.json"
+				"path": "./syntaxes/sml.tmGrammar.json"
 			}
 		],
 		"languages": [
@@ -63,7 +63,8 @@
 		"mocha": "^6.1.4",
 		"typescript": "^3.3.1",
 		"tslint": "^5.12.1",
-		"vscode-test": "^1.0.0-next.0"
+		"vscode-test": "^1.0.0-next.0",
+		"vsce": "^1.81.1"
 	},
 	"dependencies": {
 		"web-tree-sitter": "^0.15.6"
