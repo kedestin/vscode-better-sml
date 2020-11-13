@@ -15,11 +15,11 @@ import * as vscode from 'vscode';
 export function legend() {
     const tokenTypes = ["namespace",
         "type",
-        "type.defaultLibrary",
         "struct",
         "class",
         "interface",
         "enum",
+        "keyword",
         "function",
         "member",
         "macro",
@@ -55,6 +55,10 @@ export function betterColorSML(root: tree_sitter.SyntaxNode): vscode.SemanticTok
             return false
         }
         node.children.forEach(c => visit(c));
+        if (["=", "|", "=>", ":"].indexOf(node.type) > -1) {
+            mkToken('keyword');
+            return;
+        }
         if (node.type == 'tyvar') {
             mkToken('variable');
             return;

@@ -1,72 +1,81 @@
 {
-	"name": "vscode-better-sml",
-	"displayName": "vscode-better-sml",
-	"description": "Standard ML Support for Visual Studio Code",
-	"author": "Di Wang",
-	"license": "MIT",
-	"version": "0.0.2",
-	"publisher": "stonebuddha",
-	"engines": {
-		"vscode": "^1.36.0"
-	},
-	"categories": [
-		"Programming Languages"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/stonebuddha/vscode-better-sml.git"
-	},
-	"activationEvents": [
-		"onLanguage:sml"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"grammars": [
-			{
-				"language": "sml",
-				"scopeName": "source.sml",
-				"path": "./syntaxes/sml.tmGrammar.json"
-			}
-		],
-		"languages": [
-			{
-				"id": "sml",
-				"aliases": [
-					"Standard ML"
-				],
-				"extensions": [
-					".sml",
-					".sig",
-					".fun"
-				],
-				"configuration": "./sml.configuration.json"
-			}
-		],
-		"snippets": [
-			{
-				"language": "sml",
-				"path": "./snippets/sml.json"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^5.2.6",
-		"@types/node": "^10.12.21",
-		"@types/vscode": "^1.36.0",
-		"glob": "^7.1.4",
-		"mocha": "^6.1.4",
-		"typescript": "^3.3.1",
-		"tslint": "^5.12.1",
-		"vscode-test": "^1.0.0-next.0",
-		"vsce": "^1.81.1"
-	},
-	"dependencies": {
-		"web-tree-sitter": "^0.15.6"
-	}
+        "name": "vscode-better-sml",
+        "displayName": "vscode-better-sml",
+        "description": "Standard ML Support for Visual Studio Code",
+        "author": "Di Wang",
+        "license": "MIT",
+        "version": "0.0.2",
+        "publisher": "stonebuddha",
+        "engines": {
+                "vscode": "^1.36.0"
+        },
+        "categories": [
+                "Programming Languages"
+        ],
+        "repository": {
+                "type": "git",
+                "url": "https://github.com/stonebuddha/vscode-better-sml.git"
+        },
+        "activationEvents": [
+                "onLanguage:sml"
+        ],
+        "main": "./out/extension.js",
+        "contributes": {
+                "grammars": [
+                        {
+                                "language": "sml",
+                                "scopeName": "source.sml",
+                                "path": "./syntaxes/sml.tmGrammar.json"
+                        }
+                ],
+                "semanticTokenScopes": [
+                        {
+                                "scopes": {
+                                        "keyword": [
+                                                "keyword.other.ml"
+                                        ]
+                                }
+                        }
+                ],
+                "languages": [
+                        {
+                                "id": "sml",
+                                "aliases": [
+                                        "Standard ML"
+                                ],
+                                "extensions": [
+                                        ".sml",
+                                        ".sig",
+                                        ".fun"
+                                ],
+                                "configuration": "./sml.configuration.json"
+                        }
+                ],
+                "snippets": [
+                        {
+                                "language": "sml",
+                                "path": "./snippets/sml.json"
+                        }
+                ]
+        },
+        "scripts": {
+                "vscode:prepublish": "npm run compile",
+                "compile": "tsc -p ./",
+                "watch": "tsc -watch -p ./"
+        },
+        "devDependencies": {
+                "@types/glob": "^7.1.1",
+                "@types/mocha": "^5.2.6",
+                "@types/node": "^10.12.21",
+                "@types/vscode": "^1.36.0",
+                "glob": "^7.1.4",
+                "mocha": "^6.1.4",
+                "typescript": "^3.3.1",
+                "tslint": "^5.12.1",
+                "vscode-test": "^1.0.0-next.0",
+                "vsce": "^1.81.1"
+        },
+        "dependencies": {
+                "web-tree-sitter": "^0.15.6"
+        }
 }
