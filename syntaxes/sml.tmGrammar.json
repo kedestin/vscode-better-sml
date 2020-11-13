@@ -16,21 +16,25 @@
                         "include": "#comments"
                 },
                 {
+                        "include": "#keywords"
+                },
+
+                {
                         "match": "\\b(val|datatype|signature|type|op|sharing|struct|as|let|in|abstype|local|where|case|of|fn|raise|exception|handle|ref|infix|infixr|before|end|structure|withtype)\\b",
-                        "name": "keyword.other.ml"
+                        "name": "keyword.other.sml"
                 },
                 {
                         "begin": "\\b(let)\\b",
                         "captures": {
                                 "1": {
-                                        "name": "keyword.other.ml"
+                                        "name": "keyword.other.sml"
                                 },
                                 "2": {
-                                        "name": "keyword.other.ml"
+                                        "name": "keyword.other.sml"
                                 }
                         },
                         "end": "\\b(end)\\b",
-                        "name": "meta.exp.let.ml",
+                        "name": "meta.exp.let.sml",
                         "patterns": [
                                 {
                                         "include": "$self"
@@ -41,14 +45,14 @@
                         "begin": "\\b(sig)\\b",
                         "captures": {
                                 "1": {
-                                        "name": "keyword.other.delimiter.ml"
+                                        "name": "keyword.other.delimiter.sml"
                                 },
                                 "2": {
-                                        "name": "keyword.other.delimiter.ml"
+                                        "name": "keyword.other.delimiter.sml"
                                 }
                         },
                         "end": "\\b(end)\\b",
-                        "name": "meta.module.sigdec.ml",
+                        "name": "meta.module.sigdec.sml",
                         "patterns": [
                                 {
                                         "include": "#spec"
@@ -57,16 +61,16 @@
                 },
                 {
                         "match": "\\b(if|then|else)\\b",
-                        "name": "keyword.control.ml"
+                        "name": "keyword.control.sml"
                 },
                 {
                         "match": "\\b(fun|and)\\s+([\\w]+)\\b",
                         "captures": {
                                 "1": {
-                                        "name": "keyword.control.fun.ml"
+                                        "name": "keyword.control.fun.sml"
                                 },
                                 "2": {
-                                        "name": "entity.name.function.ml"
+                                        "name": "entity.name.function.sml"
                                 }
                         }
                 },
@@ -75,81 +79,101 @@
                         "begin": "\"",
                         "beginCaptures": [
                                 {
-                                        "name": "punctuation.definition.string.begin.ml"
+                                        "name": "punctuation.definition.string.begin.sml"
                                 }
                         ],
                         "end": "\"",
                         "endCaptures": [
                                 {
-                                        "name": "punctuation.definition.string.end.ml"
+                                        "name": "punctuation.definition.string.end.sml"
                                 }
                         ],
-                        "name": "string.quoted.double.ml",
+                        "name": "string.quoted.double.sml",
                         "patterns": [
                                 {
                                         "match": "\\\\.",
-                                        "name": "constant.character.escape.ml"
+                                        "name": "constant.character.escape.sml"
                                 }
                         ]
                 },
                 {
                         "captures": {
                                 "1": {
-                                        "name": "punctuation.definition.constant.ml"
+                                        "name": "punctuation.definition.constant.sml"
                                 },
                                 "3": {
-                                        "name": "punctuation.definition.constant.ml"
+                                        "name": "punctuation.definition.constant.sml"
                                 }
                         },
                         "match": "(#\")(\\\\)?.(\")",
-                        "name": "constant.character.ml"
+                        "name": "constant.character.sml"
                 },
                 {
-                        "comment": "(word | float | int)",
-                        "match": "(?x) \\b(0w\\d+|0wx[0-9A-Fa-f]+ | ~?\\d+\\.\\d+([Ee]~?\\d+)? | ~?0x[0-9A-Fa-f]+|~?\\d+)\\b",
-                        "name": "constant.numeric.ml"
+                        "comment": "word",
+                        "match": "\\b0w\\d+\\b",
+                        "name": "constant.numeric.integer.unsigned.sml"
+                },
+                {
+                        "comment": "word (hex)",
+                        "match": "0wx[0-9A-Fa-f]+",
+                        "name": "constant.numeric.integer.hexadecimal.unsigned.sml"
+                },
+                {
+                        "comment": "float",
+                        "match": "\\b~?\\d+\\.\\d+([Ee]~?\\d+)?\\b",
+                        "name": "constant.numeric.float.sml"
+                },
+                {
+                        "comment": "int (hex)",
+                        "match": "\\~?0x[0-9A-Fa-f]+\\b",
+                        "name": "constant.numeric.integer.hexadecimal.sml"
+                },
+                {
+                        "comment": "int",
+                        "match": "\\b~?\\d+\\b",
+                        "name": "constant.numeric.integer.sml"
                 },
                 {
                         "match": "\\b(andalso|orelse|not)\\b",
-                        "name": "keyword.operator.logical.ml"
+                        "name": "keyword.operator.logical.sml"
                 },
                 {
                         "begin": "(?x)\\b\n\t\t\t\t\t(functor|structure|signature|funsig)\\s+\n\t\t\t\t\t(\\w+)\\s* # identifier",
                         "captures": {
                                 "1": {
-                                        "name": "storage.type.module.binder.ml"
+                                        "name": "storage.type.module.binder.sml"
                                 },
                                 "2": {
-                                        "name": "entity.name.type.module.ml"
+                                        "name": "entity.name.type.module.sml"
                                 }
                         },
                         "end": "(?==|:|\\()",
-                        "name": "meta.module.dec.ml"
+                        "name": "meta.module.dec.sml"
                 },
                 {
                         "match": "\\b(open)\\b",
-                        "name": "keyword.other.module.ml"
+                        "name": "keyword.other.module.sml"
                 },
                 {
-                        "match": "\\b(nil|true|false|NONE|SOME)\\b",
-                        "name": "constant.language.ml"
+                        "match": "\\b(nil|true|false|NONE|SOME|_)\\b",
+                        "name": "constant.language.sml"
                 },
                 {
                         "begin": "\\b(type|eqtype) .* =",
                         "captures": {
                                 "1": {
-                                        "name": "keyword.other.typeabbrev.ml"
+                                        "name": "keyword.other.typeabbrev.sml"
                                 },
                                 "2": {
-                                        "name": "variable.other.typename.ml"
+                                        "name": "variable.other.typename.sml"
                                 }
                         },
                         "end": "$",
-                        "name": "meta.typeabbrev.ml",
+                        "name": "meta.typeabbrev.sml",
                         "patterns": [
                                 {
                                         "match": "(([a-zA-Z0-9\\.\\* ]|(\\->))*)",
-                                        "name": "meta.typeexp.ml"
+                                        "name": "meta.typeexp.sml"
                                 }
                         ]
                 }
@@ -161,16 +185,16 @@
                                         "begin": "\\(\\*",
                                         "beginCaptures": [
                                                 {
-                                                        "name": "punctuation.definition.comment.begin.ml"
+                                                        "name": "punctuation.definition.comment.begin.sml"
                                                 }
                                         ],
                                         "end": "\\*\\)",
                                         "endCaptures": [
                                                 {
-                                                        "name": "punctuation.definition.comment.end.ml"
+                                                        "name": "punctuation.definition.comment.end.sml"
                                                 }
                                         ],
-                                        "name": "comment.block.ml",
+                                        "name": "comment.block.sml",
                                         "patterns": [
                                                 {
                                                         "include": "#comments"
@@ -187,7 +211,7 @@
                                         "name": "keyword.control.sml"
                                 },
                                 {
-                                        "match": "\\b(before|o|∗|/|mod|div|^||+|-|:=|>|<|>=|<=|=|<>|::|@)\\b",
+                                        "match": "(\\s|\\b)(before|mod|div|:=|>=|<=|=|<>|::|[o*\\/^\\-><@])(\\s|\\b)",
                                         "name": "keyword.operator.default.infix.sml"
                                 },
                                 {
