@@ -106,16 +106,18 @@ export function betterColorSML(root: tree_sitter.SyntaxNode): vscode.SemanticTok
             case 'var_pat':
                 if (parent.parent!.type === 'clause' && !parent.previousSibling) {
                     mkToken('function');
-                } else if (descendsFrom('clause')) {
+                } else if (descendsFrom('clause') || descendsFrom('rule')) {
                     if (isUpper(node.text))
                         mkToken('type');
                     else
                         mkToken('parameter');
-                } else if (parent.parent!.type === 'app_pat' && parent.parent!.childCount === 1 && parent.parent!.parent!.type === 'vb') {
-                    mkToken('function');
-                } else {
-                    mkToken('type');
+                } else if (parent.parent!.type === 'app_pat' && parent.parent!.childCount === 1 && descendsFrom('vb')) {
+                    mkToken('variable')
                 }
+                //     mkToken('function');
+                // } else {
+                //     mkToken('type');
+                // }
                 break;
             case 'var_exp':
                 if (isUpper(node.text)) {

@@ -211,7 +211,7 @@
                                         "name": "keyword.control.sml"
                                 },
                                 {
-                                        "match": "(\\s|\\b)(before|mod|div|:=|>=|<=|=|<>|::|[o*\\/^\\-><@])(\\s|\\b)",
+                                        "match": "(\\s|\\b)(before|mod|div|:=|>=|<=|=|<>|::|[o+*\\/^\\-><@])(\\s|\\b)",
                                         "name": "keyword.operator.default.infix.sml"
                                 },
                                 {
